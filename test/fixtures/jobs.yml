@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_date: 
+  end_date: 2017-06-09
+  duration: 1
+  rate: 1
+  total: 1
+  invoiced: false
+  paid: false
+  employee: one
+  client: one
+
+two:
+  start_date: 
+  end_date: 2017-06-09
+  duration: 1
+  rate: 1
+  total: 1
+  invoiced: false
+  paid: false
+  employee: two
+  client: two
