@@ -1,5 +1,7 @@
 class Employee < ApplicationRecord
-  validates :phone, phone: { possible: true, country_specifier: -> phone { phone.country.try(:upcase) } }
+  validates :phone, phone: true
 
-
+  has_many :jobs
+  has_many :invoices
+  has_many :clients, through: :jobs
 end

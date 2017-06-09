@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170609083535) do
+ActiveRecord::Schema.define(version: 20170609111328) do
 
   create_table "clients", force: :cascade do |t|
     t.string "name"
-    t.integer "phone"
+    t.string "phone"
     t.string "street_address"
     t.string "suburb"
     t.integer "postcode"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20170609083535) do
 
   create_table "contacts", force: :cascade do |t|
     t.integer "company_id"
-    t.integer "phone"
+    t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "first_name"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20170609083535) do
   end
 
   create_table "employees", force: :cascade do |t|
-    t.integer "phone"
+    t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "street_address"
@@ -48,6 +48,11 @@ ActiveRecord::Schema.define(version: 20170609083535) do
     t.boolean "paid", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "employee_id"
+    t.integer "client_id"
+    t.boolean "sent", default: false
+    t.index ["client_id"], name: "index_invoices_on_client_id"
+    t.index ["employee_id"], name: "index_invoices_on_employee_id"
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -63,6 +68,7 @@ ActiveRecord::Schema.define(version: 20170609083535) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "invoice_id"
+    t.string "description"
     t.index ["client_id"], name: "index_jobs_on_client_id"
     t.index ["employee_id"], name: "index_jobs_on_employee_id"
     t.index ["invoice_id"], name: "index_jobs_on_invoice_id"
